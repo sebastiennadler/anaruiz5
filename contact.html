@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!--
+    Ce fichier HTML fait partie du site d'Ana Ruiz.
+    Structure, navigation, et fonctionnalités sont expliquées par des commentaires dans le code.
+    Tout est responsive, accessible et moderne. Voir README.md pour plus de détails.
+  -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Ana Ruiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style-modern.css">
+  <style>
+    body {
+      background: #151516 url("img/photo-ana.jpg") no-repeat center right fixed;
+      background-size: cover;
+      /* Un voile sombre pour la lisibilité */
+      position: relative;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: 0;
+      inset: 0;
+      background: rgba(22,20,27,0.63);
+      pointer-events: none;
+      /* Pour bien lisser l’image sous le texte */
+    }
+    .contact-container {
+      position: relative;
+      max-width: 700px;
+      margin: 6rem auto 3rem auto;
+      padding: 2.5em 2.5em;
+      background: rgba(38,37,41,0.23);
+      border-radius: 26px;
+      box-shadow: 0 2px 28px #18101819;
+      text-align: center;
+      z-index: 1;
+    }
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      color: #f4efe9;
+      font-size: 2rem;
+      margin-bottom: 1em;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .contact-info {
+      color: #cec9c4;
+      font-size: 1.14rem;
+      margin-bottom: 2em;
+      word-break: normal;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 2px 8px #19102844;
+    }
+    .contact-form label {
+      display: block;
+      color: #b8bac2;
+      font-size: 1.01rem;
+      margin: 1.4em 0 0.4em 0;
+      text-align: left;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.6em 0.9em;
+      border-radius: 10px;
+      border: 1px solid #28282b;
+      font-size: 1.07rem;
+      background: #232324ee;
+      color: #f4efe9;
+      margin-bottom: 1em;
+      box-shadow: 0 1px 7px #18101810;
+      transition: border-color 0.14s;
+      outline: none;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: #9976e3;
+      background: #242136;
+    }
+    .contact-form button {
+      padding: 0.8em 2.2em;
+      background: rgba(238, 233, 222, 0.17);
+      color: #ded6c2;
+      border: none;
+      border-radius: 22px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 9px #18101421;
+      transition: background 0.15s, color 0.15s;
+      cursor: pointer;
+      margin-top: 0.8em;
+    }
+    .contact-form button:hover {
+      background: rgba(238, 233, 222, 0.27);
+      color: #f4efe9;
+    }
+    @media (max-width: 850px) {
+      .contact-container { max-width: 98vw; }
+    }
+    @media (max-width: 600px) {
+      .contact-title { font-size: 1.18rem; }
+      .contact-info { font-size: 0.98rem; }
+      .contact-container { padding: 1.1em 0.3em; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Barre de navigation principale ===== -->
+
+  <nav class="navbar">
+    <div class="nav-logo"><a href="index.html">Ana Ruiz</a></div>
+    <button id="menu-toggle" aria-label="Ouvrir le menu" class="hamburger">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="galeries.html">Galeries</a></li>
+      <li><a href="diaporama.html">Diaporama</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <button id="theme-toggle" aria-label="Changer de thème"></button>
+  </nav>
+  
+  <!-- ===== Contenu principal de la page ===== -->
+  <main>
+
+    <div class="contact-container fade-in">
+      <div class="contact-title">Contact</div>
+      <div class="contact-info">
+        Pour toute question, proposition ou collaboration, n’hésitez pas à me contacter :<br><br>
+        <a href="mailto:anaruiz@exemple.com" style="color:#8cb1b8; text-decoration:underline;">anaruiz@exemple.com</a>
+      </div>
+      <form class="contact-form" action="mailto:anaruiz@exemple.com" method="post" enctype="text/plain">
+        <label for="nom">Nom</label>
+        <input type="text" name="nom" id="nom" required autocomplete="name">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required autocomplete="email">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="5" required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </main>
+  
+  <!-- ===== Pied de page commun à tout le site ===== -->
+  <footer>
+
+    <p>&copy; 2025 Ana Ruiz. Tous droits réservés. | <a href="mentions-legales.html">Mentions légales</a></p>
+  </footer>
+  
+  <!-- ===== Scripts spécifiques à la page ===== -->
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('menu-toggle').onclick = function() {
+        document.querySelector('.nav-links').classList.toggle('show');
+      };
+      document.querySelectorAll('.fade-in').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    });
+  </script>
+</body>
+</html>
+

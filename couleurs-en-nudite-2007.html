@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!--
+    Ce fichier HTML fait partie du site d'Ana Ruiz.
+    Structure, navigation, et fonctionnalités sont expliquées par des commentaires dans le code.
+    Tout est responsive, accessible et moderne. Voir README.md pour plus de détails.
+  -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Couleurs en nudité (2007) - Ana Ruiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style-modern.css">
+  <style>
+    body { background: #151516 !important; }
+    .gallery-page { max-width: 1000px; margin: 5rem auto 3rem auto; padding: 0 1vw; }
+    .gallery-title { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5em; color: #f4efe9; font-weight: 700; letter-spacing: 0.5px; text-align: center; line-height: 1.25; }
+    .gallery-desc { color: #cec9c4; font-size: 1.09rem; margin: 0 0 2.2em 0; text-align: center; font-style: italic; }
+    .gallery-works { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2em 2em; margin-bottom: 2em; }
+    .gallery-work { background: rgba(38,37,41,0.12); border-radius: 16px; box-shadow: 0 2px 14px #19171b18; overflow: hidden; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.16s; }
+    .gallery-work img { width: 100%; height: 260px; object-fit: cover; background: #222; display: block; cursor: pointer; }
+    .gallery-work-title { margin: 1em 0 0.6em 0; color: #f4efe9; font-family: 'Playfair Display', serif; font-size: 1.09rem; font-weight: 700; letter-spacing: 0.2px; text-align: center; }
+    .gallery-work-desc { color: #c7c7c7; font-size: 0.99rem; text-align: center; margin-bottom: 1em; }
+    .gallery-citation { margin: 2.5em auto 1.5em auto; color: #a7a2b6; background: rgba(44,44,48,0.18); border-left: 3px solid #8b858c; font-style: italic; font-size: 1.07rem; padding: 1em 1.3em; max-width: 650px; border-radius: 10px; box-shadow: 0 2px 14px #19171b18; }
+    .gallery-back { display: flex; justify-content: center; margin-top: 2.5em; }
+    .gallery-back a { font-size: 1rem; color: #968a7f; text-decoration: none; background: rgba(238, 233, 222, 0.12); padding: 0.7em 1.5em; border-radius: 18px; transition: background 0.14s, color 0.14s; box-shadow: 0 2px 9px #18101421; }
+    .gallery-back a:hover { background: rgba(238, 233, 222, 0.22); color: #b3a797; }
+    @media (max-width: 600px) {
+      .gallery-title { font-size: 1.3rem;}
+      .gallery-works { grid-template-columns: 1fr;}
+      .gallery-work img { height: 180px;}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Barre de navigation principale ===== -->
+
+  <nav class="navbar">
+    <div class="nav-logo"><a href="index.html">Ana Ruiz</a></div>
+    <button id="menu-toggle" aria-label="Ouvrir le menu" class="hamburger">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="galeries.html" class="active">Galeries</a></li>
+      <li><a href="diaporama.html">Diaporama</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button id="theme-toggle" aria-label="Changer de thème"></button>
+  </nav>
+  
+  <!-- ===== Contenu principal de la page ===== -->
+  <main>
+
+    <div class="gallery-page fade-in">
+      <div class="gallery-title">Couleurs en nudité (2007)</div>
+      <div class="gallery-desc">
+        Le corps à l’état brut, la couleur pour seule parure, la nudité comme expression.
+      </div>
+      <div class="gallery-works">
+
+        <div class="gallery-work">
+          <img src="img/nudite-couverture.jpg" alt="Nudité couverture">
+          <div class="gallery-work-title">Nudité couverture</div>
+        </div>
+        <div class="gallery-work">
+          <img src="img/eaux-rouges.jpg" alt="Eaux rouges">
+          <div class="gallery-work-title">Eaux rouges</div>
+        </div>
+        <div class="gallery-work">
+          <img src="img/au-bord-du-visible.jpg" alt="Au bord du visible">
+          <div class="gallery-work-title">Au bord du visible</div>
+        </div>
+        <div class="gallery-work">
+          <img src="img/chaleur-dafrique.jpg" alt="Chaleur d'Afrique">
+          <div class="gallery-work-title">Chaleur d'Afrique</div>
+        </div>
+        <div class="gallery-work">
+          <img src="img/force-tranquille.jpg" alt="Force tranquille">
+          <div class="gallery-work-title">Force tranquille</div>
+        </div>
+        <div class="gallery-work">
+          <img src="img/entre-lafrique-et-leurope.jpg" alt="Entre l'Afrique et l'Europe">
+          <div class="gallery-work-title">Entre l'Afrique et l'Europe</div>
+        </div>
+        <div class="gallery-work">
+          <img src="img/sur-la-terre.jpg" alt="Sur la terre">
+          <div class="gallery-work-title">Sur la terre</div>
+        </div>
+
+      </div>
+      <div class="gallery-citation">
+        «&nbsp;La nudité est couleur, la couleur est nudité.&nbsp;»
+      </div>
+      <div class="gallery-back">
+        <a href="galeries.html">&larr; Retour aux galeries</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Lightbox pour affichage plein écran -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="Œuvre en plein écran">
+  </div>
+  
+  <!-- ===== Pied de page commun à tout le site ===== -->
+  <footer>
+
+    <p>&copy; 2025 Ana Ruiz. Tous droits réservés. | <a href="mentions-legales.html">Mentions légales</a></p>
+  </footer>
+  
+  <!-- ===== Scripts spécifiques à la page ===== -->
+  <script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Ouvre lightbox au clic
+    document.querySelectorAll('.gallery-work img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = document.getElementById('lightbox-img');
+        lightboxImg.src = this.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+    // Ferme sur croix
+    document.getElementById('lightbox-close').onclick = function() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.getElementById('lightbox-img').src = '';
+    };
+    // Ferme sur clic hors image
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+        document.getElementById('lightbox-img').src = '';
+      }
+    });
+    // Ferme sur ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.getElementById('lightbox').style.display = 'none';
+        document.getElementById('lightbox-img').src = '';
+      }
+    });
+    // Burger menu
+    document.getElementById('menu-toggle').onclick = function() {
+      document.querySelector('.nav-links').classList.toggle('show');
+    };
+    document.querySelectorAll('.fade-in').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!--
+    Ce fichier HTML fait partie du site d'Ana Ruiz.
+    Structure, navigation, et fonctionnalités sont expliquées par des commentaires dans le code.
+    Tout est responsive, accessible et moderne. Voir README.md pour plus de détails.
+  -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos - Ana Ruiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style-modern.css">
+  <style>
+    body { background: #151516 !important; }
+    .about-container {
+      max-width: 820px;
+      margin: 6rem auto 3rem auto;
+      padding: 2.5em 2em;
+      background: rgba(38,37,41,0.14);
+      border-radius: 22px;
+      box-shadow: 0 2px 28px #18101819;
+    }
+    .about-title {
+      font-family: 'Playfair Display', serif;
+      color: #f4efe9;
+      font-size: 2rem;
+      margin-bottom: 1.4em;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+    .about-text {
+      color: #cec9c4;
+      font-size: 1.17rem;
+      line-height: 1.7;
+      margin-bottom: 2.7em;
+      text-align: center;
+    }
+    .distinctions-block {
+      background: linear-gradient(93deg, #1c1b20 75%, #47384d 100%);
+      border-left: 5px solid #9976e3;
+      border-radius: 16px;
+      box-shadow: 0 3px 24px #19102822;
+      padding: 2.1em 1.4em 1.6em 2.1em;
+      margin: 0 auto 2.5em auto;
+      max-width: 600px;
+      color: #ece3f2;
+      text-align: left;
+      animation: fadeIn 0.6s;
+    }
+    .distinctions-block h2 {
+      font-family: 'Playfair Display', serif;
+      color: #c6a4fb;
+      font-size: 1.32rem;
+      font-weight: 700;
+      margin-top: 0; margin-bottom: 1em;
+      letter-spacing: 0.4px;
+    }
+    .distinctions-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 1.08rem;
+    }
+    .distinctions-list li {
+      margin-bottom: 0.85em;
+      padding-left: 1.7em;
+      position: relative;
+    }
+    .distinctions-list li::before {
+      content: "★";
+      position: absolute;
+      left: 0;
+      color: #ffc400;
+      font-size: 1.06em;
+      top: 0.02em;
+      opacity: 0.9;
+    }
+    @media (max-width: 600px) {
+      .about-title { font-size: 1.21rem;}
+      .about-text { font-size: 1.02rem; }
+      .distinctions-block { padding: 1.3em 0.6em 1.2em 1em; }
+      .distinctions-block h2 { font-size: 1.03rem;}
+      .distinctions-list { font-size: 0.97rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Barre de navigation principale ===== -->
+
+  <nav class="navbar">
+    <div class="nav-logo"><a href="index.html">Ana Ruiz</a></div>
+    <button id="menu-toggle" aria-label="Ouvrir le menu" class="hamburger">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="galeries.html">Galeries</a></li>
+      <li><a href="diaporama.html">Diaporama</a></li>
+      <li><a href="apropos.html" class="active">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button id="theme-toggle" aria-label="Changer de thème"></button>
+  </nav>
+  
+  <!-- ===== Contenu principal de la page ===== -->
+  <main>
+
+    <div class="about-container fade-in">
+      <div class="about-title">À propos</div>
+      <div class="about-text">
+        Ana Ruiz, artiste plasticienne franco-espagnole, travaille la matière, la couleur et la mémoire.  
+        Son œuvre explore la notion de passage, de métamorphose et d’enracinement.  
+        Ana vit et crée entre la France et l’Espagne, mêlant influences ibériques et inspiration méditerranéenne.  
+        <br><br>
+        Son parcours est marqué par une recherche constante du lien entre l’intime et l’universel,  
+        le végétal et l’humain, l’identité et l’ailleurs.
+      </div>
+
+      <div class="distinctions-block">
+        <h2>Distinctions</h2>
+        <ul class="distinctions-list">
+          <li>1976&nbsp;: <b>1<sup>er</sup> prix jeune artiste</b>, Monumento al minero<br><span style="opacity:.7;">Guardo, Espagne</span></li>
+          <li>2004&nbsp;: <b>Élue artiste de l’année</b><br><span style="opacity:.7;">Gif-sur-Yvette</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+  
+  <!-- ===== Pied de page commun à tout le site ===== -->
+  <footer>
+
+    <p>&copy; 2025 Ana Ruiz. Tous droits réservés. | <a href="mentions-legales.html">Mentions légales</a></p>
+  </footer>
+  
+  <!-- ===== Scripts spécifiques à la page ===== -->
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('menu-toggle').onclick = function() {
+        document.querySelector('.nav-links').classList.toggle('show');
+      };
+      document.querySelectorAll('.fade-in').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!--
+    Ce fichier HTML fait partie du site d'Ana Ruiz.
+    Structure, navigation, et fonctionnalités sont expliquées par des commentaires dans le code.
+    Tout est responsive, accessible et moderne. Voir README.md pour plus de détails.
+  -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions légales - Ana Ruiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style-modern.css">
+  <style>
+    body { background: #151516 !important; }
+    .legal-container {
+      max-width: 780px;
+      margin: 6rem auto 3rem auto;
+      padding: 2.5em 2.2em;
+      background: rgba(38,37,41,0.13);
+      border-radius: 22px;
+      box-shadow: 0 2px 28px #18101819;
+      color: #cec9c4;
+      font-size: 1.10rem;
+      line-height: 1.68;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #f4efe9;
+      font-size: 2rem;
+      margin-bottom: 1.4em;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+    h2 {
+      color: #c6a4fb;
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: 1.14rem;
+      margin-top: 2em;
+      margin-bottom: 0.7em;
+      font-weight: 700;
+    }
+    a { color: #8cb1b8; }
+    @media (max-width: 600px) {
+      h1 { font-size: 1.22rem; }
+      .legal-container { font-size: 0.98rem; padding: 1.2em 0.6em;}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Barre de navigation principale ===== -->
+
+  <nav class="navbar">
+    <div class="nav-logo"><a href="index.html">Ana Ruiz</a></div>
+    <button id="menu-toggle" aria-label="Ouvrir le menu" class="hamburger">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="galeries.html">Galeries</a></li>
+      <li><a href="diaporama.html">Diaporama</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button id="theme-toggle" aria-label="Changer de thème"></button>
+  </nav>
+  
+  <!-- ===== Contenu principal de la page ===== -->
+  <main>
+
+    <div class="legal-container fade-in">
+      <h1>Mentions légales</h1>
+      <p>
+        <b>Responsable de la publication&nbsp;:</b> Ana Ruiz<br>
+        <b>Contact&nbsp;:</b> <a href="mailto:anaruiz@exemple.com">anaruiz@exemple.com</a><br>
+        <b>Hébergement&nbsp;:</b> (À compléter selon ton hébergeur)<br>
+      </p>
+      <h2>Propriété intellectuelle</h2>
+      <p>
+        L’ensemble de ce site relève de la législation française et internationale sur le droit d’auteur et la propriété intellectuelle.  
+        Tous les droits de reproduction sont réservés, y compris pour les documents iconographiques et photographiques.
+      </p>
+      <h2>Protection des données personnelles</h2>
+      <p>
+        Conformément à la loi Informatique et Libertés, vous disposez d’un droit d’accès, de rectification et de suppression des données vous concernant.  
+        Pour toute demande, contactez Ana Ruiz à l’adresse indiquée ci-dessus.
+      </p>
+      <h2>Crédits</h2>
+      <p>
+        Création, textes et œuvres : Ana Ruiz<br>
+        (Tu peux ajouter le nom de développeur, photographe, etc., si besoin)
+      </p>
+    </div>
+  </main>
+  
+  <!-- ===== Pied de page commun à tout le site ===== -->
+  <footer>
+
+    <p>&copy; 2025 Ana Ruiz. Tous droits réservés.</p>
+  </footer>
+  
+  <!-- ===== Scripts spécifiques à la page ===== -->
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('menu-toggle').onclick = function() {
+        document.querySelector('.nav-links').classList.toggle('show');
+      };
+      document.querySelectorAll('.fade-in').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    });
+  </script>
+</body>
+</html>

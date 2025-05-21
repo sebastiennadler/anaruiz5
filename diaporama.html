@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!--
+    Ce fichier HTML fait partie du site d'Ana Ruiz.
+    Structure, navigation, et fonctionnalités sont expliquées par des commentaires dans le code.
+    Tout est responsive, accessible et moderne. Voir README.md pour plus de détails.
+  -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diaporama - Ana Ruiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style-modern.css">
+  <style>
+    body { background: #151516 !important; }
+    .diaporama-container {
+      max-width: 950px;
+      margin: 5.5rem auto 3rem auto;
+      padding: 2em 1vw 3em 1vw;
+      background: rgba(38,37,41,0.14);
+      border-radius: 24px;
+      box-shadow: 0 2px 32px #19102823;
+      text-align: center;
+      position: relative;
+    }
+    .diapo-title {
+      font-family: 'Playfair Display', serif;
+      color: #f4efe9;
+      font-size: 2rem;
+      margin-bottom: 1.5em;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .diapo-img {
+      width: 97%;
+      max-width: 760px;
+      height: 460px;
+      object-fit: contain;
+      background: #222;
+      border-radius: 17px;
+      box-shadow: 0 2px 22px #19102834;
+      margin: 0 auto 1.2em auto;
+      transition: box-shadow 0.25s;
+      user-select: none;
+      cursor: pointer;
+    }
+    .diapo-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5em;
+      margin-bottom: 1.6em;
+    }
+    .diapo-btn {
+      background: rgba(238, 233, 222, 0.14);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      color: #e6e6e6;
+      font-size: 2.1rem;
+      box-shadow: 0 2px 7px #18101814;
+      cursor: pointer;
+      transition: background 0.17s, color 0.17s;
+    }
+    .diapo-btn:active, .diapo-btn:hover {
+      background: rgba(238, 233, 222, 0.23);
+      color: #968a7f;
+    }
+    .diapo-indicator {
+      color: #b8bac2;
+      font-size: 1.09rem;
+      margin-left: 0.5em;
+    }
+    .diapo-audio-btn {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: #e6e6e6;
+      margin-left: 1.2em;
+      cursor: pointer;
+      vertical-align: middle;
+      transition: color 0.15s;
+    }
+    .diapo-audio-btn:hover {
+      color: #97bbc6;
+    }
+    /* Plein écran lightbox */
+    .fullscreen-lightbox {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(22,21,30,0.97);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.4s;
+    }
+    .fullscreen-lightbox img {
+      max-width: 97vw;
+      max-height: 95vh;
+      border-radius: 17px;
+      background: #222;
+      object-fit: contain;
+      box-shadow: 0 6px 44px #19102877;
+      display: block;
+    }
+    .fullscreen-close {
+      position: absolute;
+      top: 20px; right: 34px;
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 2100;
+      font-weight: 400;
+      opacity: 0.83;
+      transition: opacity 0.16s;
+    }
+    .fullscreen-close:hover { opacity: 1; }
+    @media (max-width: 900px) {
+      .diapo-img { max-width: 99vw; height: 220px;}
+      .diaporama-container { padding: 1em 0.2vw 2em 0.2vw;}
+    }
+    @media (max-width: 600px) {
+      .diapo-title { font-size: 1.17rem;}
+      .diapo-img { height: 140px;}
+      .diapo-controls { gap: 1em; }
+      .diapo-btn { width: 38px; height: 38px; font-size: 1.4rem;}
+      .fullscreen-close { top: 8px; right: 12px; font-size: 2rem;}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Barre de navigation principale ===== -->
+
+  <nav class="navbar">
+    <div class="nav-logo"><a href="index.html">Ana Ruiz</a></div>
+    <button id="menu-toggle" aria-label="Ouvrir le menu" class="hamburger">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="galeries.html">Galeries</a></li>
+      <li><a href="diaporama.html" class="active">Diaporama</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button id="theme-toggle" aria-label="Changer de thème"></button>
+  </nav>
+  
+  <!-- ===== Contenu principal de la page ===== -->
+  <main>
+
+    <div class="diaporama-container fade-in">
+      <div class="diapo-title">Diaporama</div>
+      <img id="diapo-img" class="diapo-img" src="img/accueil.jpg" alt="Œuvre Ana Ruiz">
+      <div class="diapo-controls">
+        <button class="diapo-btn" id="prev-btn" title="Image précédente">&#8592;</button>
+        <span class="diapo-indicator" id="diapo-indicator">1 / 29</span>
+        <button class="diapo-btn" id="next-btn" title="Image suivante">&#8594;</button>
+        <button class="diapo-audio-btn" id="audio-btn" title="Musique">
+          <span id="audio-icon">&#127925;</span>
+        </button>
+        <audio id="diapo-audio" loop preload="auto">
+          <source src="audio/diapo.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <p style="color:#b8bac2; font-size:1.01rem; margin-top:1.6em;">Utilisez les flèches, touchez l’image pour le plein écran, ou laissez défiler...</p>
+    </div>
+    <!-- Plein écran lightbox -->
+    <div id="fullscreen-lightbox" class="fullscreen-lightbox">
+      <span class="fullscreen-close" id="fullscreen-close">&times;</span>
+      <img id="fullscreen-img" src="" alt="Œuvre en plein écran">
+    </div>
+  </main>
+  
+  <!-- ===== Pied de page commun à tout le site ===== -->
+  <footer>
+
+    <p>&copy; 2025 Ana Ruiz. Tous droits réservés. | <a href="mentions-legales.html">Mentions légales</a></p>
+  </footer>
+  
+  <!-- ===== Scripts spécifiques à la page ===== -->
+  <script>
+
+    // -- Diaporama logique fidèle + défilement auto aussi en plein écran --
+    const images = [
+      "img/accueil.jpg",
+      "img/andaloucia-1.jpg",
+      "img/andaloucia-2.jpg",
+      "img/andaloucia-3.jpg",
+      "img/annapurna.jpg",
+      "img/athenes.jpg",
+      "img/au-bord-du-visible.jpg",
+      "img/au-dessous-du-volcan.jpg",
+      "img/chaleur-dafrique.jpg",
+      "img/dragonnier-couverture.jpg",
+      "img/eaux-rouges.jpg",
+      "img/entre-lafrique-et-leurope.jpg",
+      "img/fda-2009-couverture.jpg",
+      "img/force-tranquille.jpg",
+      "img/guizeh.jpg",
+      "img/le-vieux-dragonnier.jpg",
+      "img/le-vieux-volcan.jpg",
+      "img/llanes.jpg",
+      "img/maison-chrysalide.jpg",
+      "img/maison-de-thyphee.jpg",
+      "img/maison-floride.jpg",
+      "img/maison-palais-prison.jpg",
+      "img/maison-paradis-perdu.jpg",
+      "img/maison-sacree.jpg",
+      "img/maison-temple.jpg",
+      "img/naples.jpg",
+      "img/nudite-couverture.jpg",
+      "img/sable-noir.jpg",
+      "img/sur-la-terre.jpg"
+    ];
+    let current = 0, autoPlay = true, timer = null;
+
+    const diapoImg = document.getElementById('diapo-img');
+    const diapoIndicator = document.getElementById('diapo-indicator');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const fullscreen = document.getElementById('fullscreen-lightbox');
+    const fullscreenImg = document.getElementById('fullscreen-img');
+    const fullscreenClose = document.getElementById('fullscreen-close');
+
+    function showImage(idx) {
+      current = (idx + images.length) % images.length;
+      diapoImg.src = images[current];
+      fullscreenImg.src = images[current];
+      diapoIndicator.textContent = (current+1) + " / " + images.length;
+    }
+    prevBtn.onclick = () => { showImage(current - 1); autoPlay = false; };
+    nextBtn.onclick = () => { showImage(current + 1); autoPlay = false; };
+
+    // Défilement automatique toutes les 2 secondes
+    function startAutoPlay() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => {
+        if (autoPlay) {
+          showImage(current + 1);
+        }
+      }, 2000);
+    }
+    startAutoPlay();
+
+    // Pause autoPlay si navigation manuelle, relance après 10s d'inactivité
+    let lastAction = Date.now();
+    function pauseAndResumeAuto() {
+      autoPlay = false;
+      lastAction = Date.now();
+      setTimeout(() => {
+        if (Date.now() - lastAction >= 9500) { autoPlay = true; }
+      }, 10000);
+    }
+    prevBtn.onclick = () => { showImage(current - 1); pauseAndResumeAuto(); };
+    nextBtn.onclick = () => { showImage(current + 1); pauseAndResumeAuto(); };
+
+    // Navigation clavier
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+    });
+
+    // Navigation tactile
+    let touchStartX = null;
+    diapoImg.addEventListener('touchstart', e => {
+      if (e.touches.length === 1) touchStartX = e.touches[0].clientX;
+    });
+    diapoImg.addEventListener('touchend', e => {
+      if (touchStartX !== null) {
+        let dx = e.changedTouches[0].clientX - touchStartX;
+        if (dx > 40) prevBtn.click();
+        if (dx < -40) nextBtn.click();
+        touchStartX = null;
+      }
+    });
+
+    // Audio
+    const audioBtn = document.getElementById('audio-btn');
+    const audioIcon = document.getElementById('audio-icon');
+    const diapoAudio = document.getElementById('diapo-audio');
+    let audioPlaying = false;
+    audioBtn.onclick = function() {
+      if (!audioPlaying) {
+        diapoAudio.play();
+        audioIcon.textContent = "⏸️";
+      } else {
+        diapoAudio.pause();
+        audioIcon.textContent = "🎵";
+      }
+      audioPlaying = !audioPlaying;
+    };
+
+    // Plein écran au clic sur l'image : le diaporama continue
+    diapoImg.onclick = function() {
+      fullscreenImg.src = diapoImg.src;
+      fullscreen.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    };
+    // Le défilement se fait aussi en plein écran
+    function syncFullScreen() {
+      if (fullscreen.style.display === "flex") {
+        fullscreenImg.src = diapoImg.src;
+      }
+    }
+    setInterval(syncFullScreen, 100);
+
+    fullscreenClose.onclick = function() {
+      fullscreen.style.display = "none";
+      document.body.style.overflow = "";
+    };
+    fullscreen.onclick = function(e) {
+      if (e.target === fullscreen) {
+        fullscreen.style.display = "none";
+        document.body.style.overflow = "";
+      }
+    };
+    document.addEventListener('keydown', function(e) {
+      if (fullscreen.style.display === "flex" && e.key === "Escape") {
+        fullscreen.style.display = "none";
+        document.body.style.overflow = "";
+      }
+    });
+
+    // Initialisation
+    showImage(current);
+
+    // Menu responsive/animation
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('menu-toggle').onclick = function() {
+        document.querySelector('.nav-links').classList.toggle('show');
+      };
+      document.querySelectorAll('.fade-in').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    });
+  </script>
+</body>
+</html>

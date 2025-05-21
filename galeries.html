@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!--
+    Ce fichier HTML fait partie du site d'Ana Ruiz.
+    Structure, navigation, et fonctionnalités sont expliquées par des commentaires dans le code.
+    Tout est responsive, accessible et moderne. Voir README.md pour plus de détails.
+  -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeries - Ana Ruiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style-modern.css">
+  <style>
+    body { background: #151516 !important; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.4em 2.2em;
+      max-width: 1000px;
+      margin: 4rem auto 2rem auto;
+      padding: 0 1vw;
+    }
+    .gallery-card {
+      display: flex;
+      background: rgba(38,37,41,0.10);
+      border-radius: 18px;
+      box-shadow: 0 4px 18px #19171b16;
+      overflow: hidden;
+      align-items: stretch;
+      transition: box-shadow 0.18s;
+      min-height: 150px;
+    }
+    .gallery-card:hover {
+      box-shadow: 0 6px 28px #2d20282a;
+    }
+    .gallery-thumb {
+      flex: none;
+      width: 140px;
+      min-width: 100px;
+      max-width: 180px;
+      object-fit: cover;
+      border-radius: 0 0 0 0;
+      background: #27272c;
+      display: block;
+      height: 100%;
+    }
+    .gallery-info {
+      padding: 1.2em 1.3em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .gallery-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.13rem;
+      margin: 0 0 0.3em 0;
+      color: #f4efe9;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .gallery-title a {
+      color: #f4efe9;
+      text-decoration: none;
+      transition: color 0.16s;
+    }
+    .gallery-title a:hover {
+      color: #968a7f;
+      text-decoration: underline;
+    }
+    .gallery-desc {
+      font-size: 1.03rem;
+      color: #cec9c4;
+      font-style: italic;
+      margin: 0.15em 0 0 0;
+    }
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-card {
+        flex-direction: column;
+        min-height: 110px;
+      }
+      .gallery-thumb {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        height: 170px;
+        border-radius: 18px 18px 0 0;
+        margin-bottom: 0.2em;
+      }
+      .gallery-info {
+        padding: 1em 1em 1.5em 1em;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Barre de navigation principale ===== -->
+
+  <nav class="navbar">
+    <div class="nav-logo"><a href="index.html">Ana Ruiz</a></div>
+    <button id="menu-toggle" aria-label="Ouvrir le menu" class="hamburger">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="galeries.html" class="active">Galeries</a></li>
+      <li><a href="diaporama.html">Diaporama</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button id="theme-toggle" aria-label="Changer de thème"></button>
+  </nav>
+  
+  <!-- ===== Contenu principal de la page ===== -->
+  <main>
+
+    <section class="gallery-list fade-in">
+      <h1>Galeries</h1>
+      <div class="gallery-grid">
+
+        <div class="gallery-card">
+          <img class="gallery-thumb" src="img/maison-chrysalide.jpg" alt="La maison ou le pouvoir de rentrer en soi-même">
+          <div class="gallery-info">
+            <div class="gallery-title">
+              <a href="la-maison-ou-le-pouvoir-de-rentrer-en-soi-meme-2012.html">La maison ou le pouvoir de rentrer en soi-même (2012)</a>
+            </div>
+            <div class="gallery-desc">
+              Une exploration intérieure, un voyage au cœur de la maison, à la recherche de soi-même.
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img class="gallery-thumb" src="img/dragonnier-couverture.jpg" alt="Sur le sentier du dragonnier">
+          <div class="gallery-info">
+            <div class="gallery-title">
+              <a href="sur-le-sentier-du-dragonnier-2008.html">Sur le sentier du dragonnier (2008)</a>
+            </div>
+            <div class="gallery-desc">
+              Cheminer au fil du végétal, dans l’univers mystique du dragonnier, entre mémoire et métamorphose.
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img class="gallery-thumb" src="img/fda-2009-couverture.jpg" alt="Fête des artistes">
+          <div class="gallery-info">
+            <div class="gallery-title">
+              <a href="fete-des-artistes-2009.html">Fête des artistes (2009)</a>
+            </div>
+            <div class="gallery-desc">
+              Hommage aux artistes, à la création partagée, à la fête et à la fraternité de l’art.
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img class="gallery-thumb" src="img/nudite-couverture.jpg" alt="Couleurs en nudité">
+          <div class="gallery-info">
+            <div class="gallery-title">
+              <a href="couleurs-en-nudite-2007.html">Couleurs en nudité (2007)</a>
+            </div>
+            <div class="gallery-desc">
+              Le corps à l’état brut, la couleur pour seule parure, la nudité comme expression.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  
+  <!-- ===== Pied de page commun à tout le site ===== -->
+  <footer>
+
+    <p>&copy; 2025 Ana Ruiz. Tous droits réservés. | <a href="mentions-legales.html">Mentions légales</a></p>
+  </footer>
+  
+  <!-- ===== Scripts spécifiques à la page ===== -->
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll('.fade-in').forEach(function(el) {
+        el.classList.add('visible');
+      });
+      document.getElementById('menu-toggle').onclick = function() {
+        document.querySelector('.nav-links').classList.toggle('show');
+      };
+    });
+  </script>
+</body>
+</html>
+

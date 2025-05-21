@@ -1,0 +1,788 @@
+/*
+  Feuille de styles globale pour le site Ana Ruiz.
+  Styles modernes, sobres, responsives, organisés par section (navigation, galeries, diaporama, etc.)
+*/
+/* -----------------------------------------------------
+   VARIABLES CSS & BASE DU SITE
+   -----------------------------------------------------
+   Définition des couleurs principales et de la structure
+   de base pour tout le site. S'adapte en mode sombre.
+----------------------------------------------------- */
+
+:root {
+  --color-bg: #fff6e6;         /* Fond ivoire chaud */
+  --color-fg: #3b2200;         /* Texte brun foncé */
+  --color-accent: #e25822;     /* Accent orange brûlé */
+  --color-link: #b85c38;       /* Terracotta */
+  --color-card: #fff3d6;       /* Fond des blocs, beige chaud */
+  --color-border: #e6b07a;     /* Bordures dorées */
+}
+[data-theme="dark"] {
+  --color-bg: #11151a;         /* Presque noir, bleu nuit très foncé */
+  --color-fg: #eaf6fb;         /* Bleu très clair pour le texte */
+  --color-accent: #21a0a0;     /* Bleu glacier pour les boutons/accents */
+  --color-link: #7fd7ff;       /* Bleu clair pour les liens */
+  --color-card: #1a2233;       /* Fond des blocs, bleu-gris foncé */
+  --color-border: #304674;     /* Bordures bleu-gris */
+}
+
+/* ----- Fond, police, transitions générales ----- */
+/* ==== Styles généraux ==== */
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: 'Montserrat Alternates', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* -----------------------------------------------------
+   NAVBAR, LOGO & MENU RESPONSIVE BURGER
+   -----------------------------------------------------
+   Barre de navigation moderne avec logo à gauche, 
+   menu à droite, menu burger mobile parfaitement fonctionnel.
+----------------------------------------------------- */
+
+/* ------ Structure de la navbar ------ */
+
+/* ==== Barre de navigation ==== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1.5rem;
+  background: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  z-index: 10;
+}
+
+.nav-logo a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+/* ------ Liens du menu ------ */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--color-link);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1.25rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* ------ Bouton mode sombre / clair ------ */
+#theme-toggle {
+  margin-left: 1.2rem;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  width: 2.1rem;
+  height: 2.1rem;
+  cursor: pointer;
+  background-image: url('data:image/svg+xml;utf8,<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="7" fill="gray"/></svg>');
+}
+
+/* -----------------------------------------------------
+   MENU BURGER (MOBILE)
+   -----------------------------------------------------
+   - Bouton hamburger affiché en mobile uniquement
+   - Menu déroulant vertical parfaitement lisible
+----------------------------------------------------- */
+
+/* Cacher le burger sur desktop */
+.hamburger {
+  display: none;
+}
+
+/* Afficher le menu burger et déroulant sur mobile */
+@media (max-width: 900px) {
+  .hamburger {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--color-accent);
+    margin-left: 1rem;
+    z-index: 1001; /* Toujours au-dessus du menu */
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 4.2rem;        /* Ajuste à la hauteur de ta navbar */
+    right: 1.5rem;
+    background: var(--color-card);
+    border-radius: 1.1rem;
+    box-shadow: 0 0 14px #0003;
+    padding: 1.3rem 1.6rem;
+    z-index: 9999;
+    min-width: 180px;
+    animation: fadeInMenu 0.45s;
+    gap: 1.3rem;
+  }
+  .nav-links.open {
+    display: flex;
+    z-index=9999;
+  }
+}
+
+/* Toujours forcer le menu horizontal sur desktop */
+@media (min-width: 901px) {
+  .nav-links {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    background: none;
+    box-shadow: none;
+    width: auto;
+    padding: 0;
+    gap: 2rem;
+  }
+  .hamburger {
+    display: none !important;
+  }
+}
+
+/* Animation d’apparition du menu déroulant */
+@keyframes fadeInMenu {
+  from { opacity: 0; transform: translateY(-18px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+/* -----------------------------------------------------
+   HERO, BOUTONS ET PIED DE PAGE
+   -----------------------------------------------------
+   Zone d'accueil immersive, boutons principaux, footer.
+----------------------------------------------------- */
+
+/* --- HERO (bandeau d'accueil) --- */
+.hero {
+  text-align: center;
+  padding: 3rem 0 2.5rem 0;
+  background: linear-gradient(120deg, var(--color-accent) 0%, var(--color-bg) 80%);
+  border-bottom: 1px solid var(--color-border);
+  min-height: 46vh;
+  position: relative;
+  z-index: 3;
+}
+.hero h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+.hero p {
+  font-size: 1.22rem;
+  font-weight: 400;
+  margin-bottom: 1.6rem;
+}
+
+/* --- BOUTONS MODERNES --- */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.6rem;
+  font-size: 1.1rem;
+  color: #fff;
+  background: var(--color-accent);
+  border: none;
+  border-radius: 1.8rem;
+  cursor: pointer;
+  box-shadow: 0 2px 12px #6173d62a;
+  font-weight: 600;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+.btn:hover { background: #4254a8; }
+.btn-retour { margin-top: 2rem; }
+
+/* --- PIED DE PAGE --- */
+
+/* ==== Footer commun ==== */
+footer {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--color-fg);
+  padding: 2rem 0 1.3rem 0;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-card);
+  position: relative;
+  z-index: 2;
+}
+
+/* -----------------------------------------------------
+   GALERIES, CARTES, GRILLES D'IMAGES
+   -----------------------------------------------------
+   Présentation des galeries sous forme de cartes ou de grilles,
+   effet responsive, hover et esthétique douce.
+----------------------------------------------------- */
+
+/* Section principale des galeries */
+.main-galeries {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 1.7rem 1rem 2.4rem 1rem;
+}
+
+/* Titre de section galeries */
+.galeries-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.galeries-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Grille responsive pour galeries */
+.galerie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+/* Carte galerie */
+.galerie-card {
+  background: var(--color-card);
+  border-radius: 1.7rem;
+  box-shadow: 0 2px 14px #0002;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-fg);
+  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 1.2rem 0 0.6rem 0;
+  border: 1px solid var(--color-border);
+}
+.galerie-card:hover {
+  transform: translateY(-6px) scale(1.035);
+  box-shadow: 0 8px 36px #6173d633;
+}
+
+/* Image en carte galerie */
+.galerie-card img {
+  width: 90%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 1.3rem;
+  box-shadow: 0 2px 12px #6173d62a;
+  margin-bottom: 1.1rem;
+}
+.galerie-card h3 {
+  margin: 0.5rem 0 0.4rem 0;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+/* Année d'une galerie */
+.annee {
+  font-size: 1rem;
+  color: var(--color-accent);
+}
+
+/* Section galerie individuelle */
+.galerie {
+  max-width: 900px;
+  margin: 0 auto 2.5rem auto;
+  padding: 1.4rem 1rem 2.2rem 1rem;
+}
+.galerie h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 1.7rem;
+}
+.galerie-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2.2rem 1.4rem;
+  margin-bottom: 2rem;
+}
+.galerie-images img {
+  width: 100%;
+  border-radius: 1.3rem;
+  box-shadow: 0 2px 16px #0002;
+  background: #fff;
+  transition: transform 0.17s;
+}
+.galerie-images img:hover {
+  transform: scale(1.035) translateY(-6px);
+}
+
+/* -----------------------------------------------------
+   DIAPORAMA & DIAPO IMMERSIF
+   -----------------------------------------------------
+   Styles des pages diaporama, images plein écran, 
+   boutons d'écoute audio, etc.
+----------------------------------------------------- */
+
+.main-diaporama {
+  max-width: 900px;
+  margin: 2.5rem auto 2rem auto;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Bouton audio natif pour le diaporama classique */
+#audio-diapo {
+  margin: 2rem auto 1rem auto;
+  width: 320px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #0002;
+  outline: none;
+  display: block;
+}
+[data-theme="dark"] #audio-diapo {
+  background: #23263a;
+}
+.audio-note {
+  color: var(--color-accent);
+  font-size: 1rem;
+  margin-top: 0.4rem;
+}
+
+/* Diaporama immersif (image + bouton fullscreen) */
+.main-diaporama-immersif {
+  max-width: 1100px;
+  margin: 2rem auto 2rem auto;
+  text-align: center;
+  padding: 1.2rem 0.7rem 2rem 0.7rem;
+  min-height: 85vh;
+}
+.diapo-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.diapo-img-immersif {
+  cursor: pointer;
+  display: block;
+  margin: 2.2rem auto 1.4rem auto;
+  max-width: 98vw;
+  max-height: 84vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 8px 34px #0003;
+  transition: box-shadow 0.15s, filter 0.17s;
+}
+.diapo-img-immersif:hover {
+  box-shadow: 0 10px 42px #0005;
+  filter: brightness(1.02);
+}
+
+/* Bouton fullscreen flottant sur l'image */
+.fullscreen-btn {
+  position: absolute;
+  bottom: 22px;
+  right: 24px;
+  background: #fff;
+  border: 1px solid #ccc;
+  color: #2b3467;
+  font-size: 2.1rem;
+  border-radius: 2.5rem;
+  padding: 0.14em 0.34em 0.08em 0.34em;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 2px 12px #0001;
+  opacity: 0.87;
+  transition: background 0.18s, box-shadow 0.15s;
+}
+.fullscreen-btn:hover {
+  background: #dde5ff;
+}
+
+/* Adaptation mobile */
+@media (max-width: 700px) {
+  .diapo-img-immersif { max-height: 58vh; border-radius: 1rem;}
+  .fullscreen-btn { bottom: 10px; right: 8px; font-size: 1.5rem;}
+}
+
+/* Plein écran sans bordures */
+.galerie-img:fullscreen {
+  background: #111;
+  object-fit: contain;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* -----------------------------------------------------
+   PAGES CONTACT, À PROPOS, MENTIONS LÉGALES
+   -----------------------------------------------------
+   Blocs statiques, formulaires, centrage et fond
+----------------------------------------------------- */
+.main-contact,
+.main-apropos,
+.main-mentions {
+  max-width: 700px;
+  margin: 2rem auto 2rem auto;
+  border-radius: 1.7rem;
+  box-shadow: 0 2px 16px #0002;
+  padding: 2rem 1.5rem;
+}
+
+.main-contact h1, .main-apropos h1, .main-mentions h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.3rem;
+}
+
+/* Formulaire contact */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 2.1rem;
+}
+.contact-form input,
+.contact-form textarea {
+  font-family: inherit;
+  border-radius: 1.2rem;
+  border: 1px solid var(--color-border);
+  padding: 0.7rem 1.2rem;
+  font-size: 1.05rem;
+  background: #fff;
+  color: #24254a;
+  transition: border 0.16s;
+}
+[data-theme="dark"] .contact-form input,
+[data-theme="dark"] .contact-form textarea {
+  background: #24254a;
+  color: #e2e4f9;
+}
+.contact-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.mail {
+  color: var(--color-accent);
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+/* -----------------------------------------------------
+   RESPONSIVE (petits écrans)
+----------------------------------------------------- */
+@media (max-width: 700px) {
+  .galerie-grid, .galerie-images {
+    grid-template-columns: 1fr;
+  }
+  .main-galeries,
+  .galerie,
+  .main-contact,
+  .main-apropos,
+  .main-mentions {
+    padding: 0.7rem 0.2rem;
+  }
+  .diapo-img {
+    max-width: 99vw;
+    max-height: 55vh;
+    border-radius: 0.7rem;
+  }
+}
+
+/* -----------------------------------------------------
+   AUDIO FAB (flottant) & SLIDESHOW/FOND ACCUEIL & CONTACT
+----------------------------------------------------- */
+
+/* Bouton audio flottant (fab) pour le diaporama immersif */
+.audio-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  transition: background 0.2s;
+}
+.audio-fab:hover {
+  background: rgba(0,0,0,0.85);
+}
+@media (max-width: 600px) {
+  .audio-fab {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.7rem;
+    font-size: 1.5rem;
+  }
+}
+#audio-diapo {
+  display: none; /* Cache le lecteur natif si fab utilisée */
+}
+
+/* Fond photo dans la page contact */
+.contact-bg {
+  min-height: 100vh;
+  background: url('../img/photo-ana.jpg') center center no-repeat fixed;
+  background-size: cover;
+}
+@media (max-width: 800px) {
+  .contact-bg {
+    background:
+      linear-gradient(to bottom, rgba(255,255,255,0.91), rgba(220,220,240,0.84)),
+      url('../img/photo-ana.jpg') center center/cover no-repeat fixed;
+  }
+}
+
+/* Bloc blanc translucide sur contenu contact */
+.contact-content, .contact-form, main, section {
+  background: rgba(255,255,255,0.80);
+  border-radius: 1.3rem;
+  box-shadow: 0 2px 10px rgba(80,80,120,0.10);
+  padding: 2rem 1rem;
+  margin: 2rem auto;
+  max-width: 540px;
+}
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Slideshow fond accueil */
+.background-slideshow {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: background-image 1s ease-in-out;
+  filter: brightness(0.89);
+}
+
+/* Tous les blocs principaux au-dessus du fond d'accueil */
+main, .navbar, footer, .card, .welcome-content {
+  position: relative;
+  z-index: 1;
+  background: rgba(255,255,255,0.87);
+  border-radius: 1.4rem;
+  box-shadow: 0 2px 8px rgba(60,80,120,0.10);
+  padding: 2rem 1rem;
+}
+
+/* -----------------------------------------------------
+   DARK MODE ACCESSIBILITÉ LIENS (lisibilité menu, footer)
+----------------------------------------------------- */
+[data-theme="dark"] a,
+[data-theme="dark"] .navbar a {
+  color: var(--color-link) !important;
+  transition: color 0.2s;
+}
+[data-theme="dark"] a:hover,
+[data-theme="dark"] .navbar a:hover {
+  color: var(--color-accent) !important;
+}
+
+
+/* -----------------------------------------------------
+   MENU BURGER RESPONSIVE & Z-INDEX OPTIMISÉ
+   -----------------------------------------------------
+   - Le menu burger .hamburger s'affiche sur mobile
+   - Le menu déroulant .nav-links.open passe devant tout
+   - La navbar reste devant le fond mais sous le menu ouvert
+----------------------------------------------------- */
+
+/* Cacher le burger sur desktop, afficher le menu horizontal */
+.hamburger {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .nav-links {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    background: none;
+    box-shadow: none;
+    width: auto;
+    padding: 0;
+    gap: 2rem;
+    z-index: auto;
+  }
+  .hamburger {
+    display: none !important;
+  }
+}
+
+/* Afficher le menu burger et déroulant sur mobile */
+@media (max-width: 900px) {
+  .navbar {
+    position: relative;
+    z-index: 10;      /* Toujours devant le fond */
+  }
+  .hamburger {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--color-accent);
+    margin-left: 1rem;
+    z-index: 1001;    /* Devant le fond & navbar */
+    position: relative; /* Pour que z-index fonctionne */
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 4.2rem;        /* Ajuste à la hauteur de ta navbar */
+    right: 1.5rem;
+    background: var(--color-card);
+    border-radius: 1.1rem;
+    box-shadow: 0 0 14px #0003;
+    padding: 1.3rem 1.6rem;
+    min-width: 180px;
+    gap: 1.3rem;
+    /* Pas de z-index ici ! */
+  }
+  .nav-links.open {
+    display: flex;
+    z-index: 9999;    /* Passe devant tout */
+  }
+}
+
+/* Animation d’apparition du menu déroulant */
+@keyframes fadeInMenu {
+  from { opacity: 0; transform: translateY(-18px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+
+@media (max-width: 900px) {
+  .navbar {
+    position: relative;
+    z-index: 20;   /* Toujours devant le fond, mais sous le menu mobile */
+  }
+  .hamburger {
+    display: block;
+    position: relative;
+    z-index: 30;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;     /* Sous la navbar */
+    left: 0;
+    right: 0;
+    background: var(--color-card, #fff);
+    border-radius: 0 0 1.1rem 1.1rem;
+    box-shadow: 0 0 14px #0003;
+    padding: 1.3rem 1.6rem;
+    min-width: 180px;
+    gap: 1.3rem;
+    /* Pas de z-index ici ! */
+  }
+  .nav-links.open {
+    display: flex;
+    z-index: 9999 !important;  /* Passe devant TOUT */
+  }
+}
+
+/* Pour éviter que main, .card, etc. passent devant le menu mobile */
+main, .card, .welcome-content, footer {
+  position: relative;
+  z-index: 1;
+}
+.background-slideshow {
+  z-index: 0;
+}
+.apropos-bg {
+  background: url('../img/photo-ana.jpg') center center no-repeat fixed;
+  background-size: cover;
+}
+[data-theme="dark"] main,
+[data-theme="dark"] .navbar,
+[data-theme="dark"] footer,
+[data-theme="dark"] .card,
+[data-theme="dark"] .welcome-content {
+  background: rgba(26, 34, 51, 0.93); /* Fond bleu nuit translucide */
+  color: var(--color-fg);
+}
+@media (max-width: 900px) {
+  [data-theme="dark"] main,
+  [data-theme="dark"] .navbar,
+  [data-theme="dark"] footer,
+  [data-theme="dark"] .card,
+  [data-theme="dark"] .welcome-content,
+  [data-theme="dark"] .main-contact,
+  [data-theme="dark"] .main-apropos,
+  [data-theme="dark"] .main-mentions,
+  [data-theme="dark"] .contact-content,
+  [data-theme="dark"] .contact-form,
+  [data-theme="dark"] section {
+    background: rgba(26, 34, 51, 0.97) !important; /* Fond bleu nuit opaque */
+    color: var(--color-fg) !important;
+  }
+}
+/* Ajoute dans ton style.css */
+#diapo-container:fullscreen,
+#diapo-container:-webkit-full-screen {
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#diapo-container img {
+  max-width: 100vw;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.diapo-fake-fullscreen {
+  position: fixed !important;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 99999;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.diapo-fake-fullscreen img {
+  max-width: 100vw;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
+  display: block;
+}

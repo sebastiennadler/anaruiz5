@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!--
+    Ce fichier HTML fait partie du site d'Ana Ruiz.
+    Structure, navigation, et fonctionnalités sont expliquées par des commentaires dans le code.
+    Tout est responsive, accessible et moderne. Voir README.md pour plus de détails.
+  -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil - Ana Ruiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style-modern.css">
+</head>
+
+<body>
+  <!-- ===== Barre de navigation principale ===== -->
+
+  <div class="background-slideshow"></div>
+  <nav class="navbar">
+    <div class="nav-logo"><a href="index.html">Ana Ruiz</a></div>
+    <button id="menu-toggle" aria-label="Ouvrir le menu" class="hamburger">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="galeries.html">Galeries</a></li>
+      <li><a href="diaporama.html">Diaporama</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button id="theme-toggle" aria-label="Changer de thème"></button>
+  </nav>
+
+  
+  <!-- ===== Contenu principal de la page ===== -->
+  <main>
+
+    <section class="hero fade-in">
+      <h1>Bienvenue dans l’univers d’Ana Ruiz</h1>
+      <p>
+        Découvrez l’œuvre d’Ana Ruiz, peintre et sculptrice. Plongez dans les galeries thématiques, explorez les créations au fil des années, et laissez-vous guider par la couleur, la matière et l’imaginaire.
+      </p>
+      <a class="btn glass-btn" href="diaporama.html">Diaporama</a>
+    </section>
+  </main>
+  
+  <!-- ===== Pied de page commun à tout le site ===== -->
+  <footer>
+
+    <p>&copy; 2025 Ana Ruiz. Tous droits réservés. | <a href="mentions-legales.html">Mentions légales</a></p>
+  </footer>
+  
+  <!-- ===== Scripts spécifiques à la page ===== -->
+  <script>
+
+    // Animation apparition
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll('.fade-in').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    });
+
+    // Hamburger mobile toggle
+    document.getElementById('menu-toggle').onclick = function() {
+      document.querySelector('.nav-links').classList.toggle('show');
+    };
+  </script>
+</body>
+</html>
+
